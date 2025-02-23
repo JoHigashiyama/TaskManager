@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}403エラー{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'task/css/403.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>403エラー</h2>
+    <p>{{ error_message }}</p>
+    <a href="{% url 'task:index' %}"><< タスク一覧</a>
+</div>
+{% endblock %}

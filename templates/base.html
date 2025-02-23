@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManager {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'task/css/style.css' %}">
+    <!-- font app_name -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <!-- Raleway -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- body font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    {% block link %}{% endblock %}
+</head>
+<body>
+    <header class="raleway-400">
+        <div class="header_left">
+            <h1 class="lilita-one-regular">ManaTask</h1>
+        </div>
+        <div class="header_right">
+            <form action="{% url 'task:search' %}" method="get">
+                {{ searchForm.task }}
+                <button type="submit" class="kiwi-maru-regular">検索</button>
+            </form>
+            {% if user.is_authenticated %}
+            <div class="user">Logged in as "{{ user }}"</div>
+            <a href="{% url 'logout' %}" class="logout">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="login">Login</a>
+            {% endif %}
+            
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ object.task }}の完了{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'task/css/delete.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ object.task }}の完了</h2>
+    <div class="items">
+        <p>タスクを完了しますか？</p>
+        <a href="{% url 'task:task_comp' object.pk %}" class="button">完了</a>
+        <a href="{% url 'task:index' %}"><< タスク一覧へ戻る</a>
+    </div>
+</div>
+{% endblock %}

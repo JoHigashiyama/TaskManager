@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}一覧ページ{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'task/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="container kiwi-maru-regular">
+        <div class="content_left">
+            <div class="box">
+                <div class="content_head">
+                    <h2>タスク一覧</h2>
+                    <div class="head_links">
+                        <a href="{% url 'task:completed' %}" class="comptask raleway-400">Completed</a>
+                        <a href="{% url 'task:create' %}" class="newtask raleway-400">New Task</a>
+                    </div>
+                </div>
+                <div class="items">
+                    {% for task in tasks %}
+                    <div class="item">
+                        <div class="info">
+                            期限：{{ task.deadline }} 最終編集日：{{ task.update_at }}
+                        </div>
+                        <div class="item_tail">
+                            <p class="task">
+                                {% if task.priority <= 3 %}
+                                <span class="priority_u3">{{ task.priority }}</span>
+                                {% elif task.priority <= 7 %}
+                                <span class="priority_u7">{{ task.priority }}</span>
+                                {% else %}
+                                <span class="priority_u10">{{ task.priority }}</span>
+                                {% endif %}
+                                {{ task.task }}
+                            </p>
+                            <div class="task_menu">
+                                <a href="{% url 'task:delete' task.pk %}" class="delete">削除</a>
+                                <a href="{% url 'task:update' task.pk %}" class="edit">編集</a>
+                                <a href="{% url 'task:comp' task.pk %}" class="comp">完了</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="tasks_sub">
+                <h2>期限間近</h2>
+                {% for task in nearDeadlineTask %}
+                <div class="task_sub">
+                    <div class="info_soon">{{ task.deadline }}</div>
+                    <p>
+                        {% if task.priority <= 3 %}
+                        <span class="priority_u3">{{ task.priority }}</span>
+                        {% elif task.priority <= 7 %}
+                        <span class="priority_u7">{{ task.priority }}</span>
+                        {% else %}
+                        <span class="priority_u10">{{ task.priority }}</span>
+                        {% endif %}
+                        {{ task.task }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="tasks_sub">
+                <h2>期限切れ</h2>
+                {% for task in overDeadlineTask %}
+                <div class="task_sub">
+                    <div class="info_soon">{{ task.deadline }}</div>
+                    <p>
+                        {% if task.priority <= 3 %}
+                        <span class="priority_u3">{{ task.priority }}</span>
+                        {% elif task.priority <= 7 %}
+                        <span class="priority_u7">{{ task.priority }}</span>
+                        {% else %}
+                        <span class="priority_u10">{{ task.priority }}</span>
+                        {% endif %}
+                        {{ task.task }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% else %}
+<div id="logout">
+    <h2 kiwi-maru-regular>ログアウト状態です</h2>
+    <p>ご利用にはログインをしてさい</p>
+    <a href="{% url 'login' %}">>> ログインへ</a>
+</div>
+{% endif %}
+{% endblock %}

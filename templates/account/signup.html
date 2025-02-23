@@ -1,0 +1,22 @@
+{% extends "accountBase.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block title %}サインアップ{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'account/css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="contents">
+        <h1 class="lilita-one-regular">ManaTask</h1>
+        <h2 class="raleway-400">Sign up</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content="Sign up" size="md" %}
+        </form>
+    </div>
+</div>
+{% endblock %}

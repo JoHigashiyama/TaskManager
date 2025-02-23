@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}一覧ページ{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'task/css/list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>完了済みタスク</h2>
+    <a href="{% url 'task:index' %}" class="index"><< タスク一覧</a>
+    <div class="items">
+        {% for task in tasks %}
+        <div class="item">
+            <div class="info">
+                期限：{{ task.deadline }} 最終編集日：{{ task.update_at }}
+            </div>
+            <div class="item_tail">
+                <p class="task">
+                    {% if task.priority <= 3 %}
+                    <span class="priority_u3">{{ task.priority }}</span>
+                    {% elif task.priority <= 7 %}
+                    <span class="priority_u7">{{ task.priority }}</span>
+                    {% else %}
+                    <span class="priority_u10">{{ task.priority }}</span>
+                    {% endif %}
+                    {{ task.task }}
+                </p>
+                <div class="task_menu">
+                    <a href="{% url 'task:delete' task.pk %}" class="delete">削除</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

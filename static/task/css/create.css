@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.container {
+    display: flex;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255, 0.4);
+    margin: 80px auto auto auto;
+    padding: 20px;
+    color: #fff;
+    border-radius: 16px;
+}
+
+.container h2 {
+    margin-bottom: 32px;
+    font-weight: 400;
+    font-size: 36px;
+}
+
+.container form {
+    width: 90%;
+    margin: auto auto 12px auto;
+}
+
+.container form div {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.container form div label {
+    width: 120px;
+    line-height: 32px;
+    height: 32px;
+}
+
+.container form textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    padding: 0 0 0 12px;
+    border: 0;
+    background: transparent;
+    background-color: #fff;
+    height: 32px;
+    line-height: 32px;
+    width: 70%;
+    border-radius: 4px;
+}
+
+.container form input {
+    padding: 0 0 0 12px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    height: 32px;
+    line-height: 32px;
+    width: 70%;
+}
+
+.container button, .button {
+    width: 120px;
+    height: 40px;
+    background-color: #38A169;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 40px;
+    font-size: 20px;
+    margin: 20px auto 12px auto;
+}
+
+.container button:hover {
+    background-color: #2e8557;
+}
+
+.container a {
+    color: #551A8B;
+    margin-left: 20px;
+}
+
+.container a:hover {
+    color: #fff;
+}
