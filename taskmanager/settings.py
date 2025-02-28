@@ -17,7 +17,7 @@ import environ
 env = environ.Env()
 env.read_env('.env')
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env.bool('DEBUG', default=FALSE)
+DEBUG = env.bool('DEBUG', default=False)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

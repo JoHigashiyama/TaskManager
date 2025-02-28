@@ -11,7 +11,18 @@
     <h2>新規タスクの作成</h2>
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_div }}
+        <div>
+            <label for="id_task">タスク:</label>
+            {{ form.task }}
+        </div>
+        <div>
+            <label for="id_priority">優先度(1~10):</label>
+            {{ form.priority }}
+        </div>
+        <div>
+            <label for="id_deadline">期限:</label>
+            <input type="date" name="deadline" id="deadline">
+        </div>
         <button type="submit">作成</button>
     </form>
     <a href="{% url 'task:index' %}"><< タスク一覧</a>
