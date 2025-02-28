@@ -91,7 +91,7 @@ def search(request):
     if searchForm.is_valid():
         query = searchForm.cleaned_data['task']
         taskModel = {
-            'results' : Task.objects.filter(task__icontains=query, author=request.user.id, comp_flg=False)
+            'results' : Task.objects.filter(task__icontains=query, author=request.user.id)
         }
         return render(request, 'task/search.html', taskModel)
 

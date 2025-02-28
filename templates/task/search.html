@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="container">
-    <h2>完了済みタスク</h2>
+    <h2>検索結果</h2>
     <a href="{% url 'task:index' %}" class="index"><< タスク一覧</a>
     <div class="items">
         {% if results %}
@@ -27,6 +27,9 @@
                     <span class="priority_u10">{{ task.priority }}</span>
                     {% endif %}
                     {{ task.task }}
+                    {% if task.comp_flg == True %}
+                    (完了)
+                    {% endif %}
                 </p>
                 <div class="task_menu">
                     <a href="{% url 'task:delete' task.pk %}" class="delete">削除</a>
